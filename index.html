@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Chart</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./index.css" />
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="./index.js"></script>
+  </head>
+  <body>
+    <div id="parent-container">
+      <div id="header-section">
+        <h4 id="header">AIX SECURE PRODUCT - CALCULATION</h4>
+        <h4 id="header-h4">
+          Here's an estimated projection to show the impact of lower fees and
+          compound interest.
+        </h4>
+      </div>
+      <div id="child-container">
+        <!-- first child that contains the 2 range bars -->
+        <div class="child-div">
+          <div class="inside-div">
+            <span class="labels">Your Investment</span>
+            <span id="range-value1">125,000</span>
+          </div>
+          <div class="rangeDiv">
+            <input
+              type="range"
+              class="range"
+              id="range1"
+              name="moneyAmount"
+              step="10"
+              value="125000"
+              min="125000"
+              max="1000000"
+              onchange="changeRangeValue1(event.target.value)"
+            />
+          </div>
+          <div class="inside-div">
+            <span class="labels">Tenure</span>
+            <span id="range-value2">36 <span>Months</span> </span>
+          </div>
+          <div class="rangeDiv">
+            <input
+              type="range"
+              class="range"
+              id="range2"
+              name="moneyAmount"
+              min="3"
+              max="36"
+              value=""
+              step="3"
+              onchange="changeRangeValue2(event.target.value)"
+            />
+          </div>
+        </div>
+        <!-- second child that contains the  vertical line -->
+        <div class="vl child-div"></div>
+        <!-- third child that contains the other 50% of the container -->
+        <div class="child-div">
+          <div class="subDiv">
+            <label class="labels">Your Investment</label>
+            <span class="rounded-span"
+              ><span class="loan-value">820,000 USD</span></span
+            >
+          </div>
+          <div class="subDiv">
+            <label class="labels" style="margin-top: 9%">Term</label>
+            <span class="rounded-span"
+              ><span class="loan-value">24 Months</span></span
+            >
+          </div>
+        </div>
+      </div>
+      <div id="divs-parent-container">
+        <div id="orange-div">
+          <p id="orange-divs-title">TOTAL QUARTER PAYOUT</p>
+          <div class="box-divs">
+            <p id="orange-divs-input">210,000</p>
+            <p style="display: inline" id="orange-divs-USD">USD</p>
+          </div>
+        </div>
+        <div id="white-div">
+          <p id="white-divs-title">TOTAL COMPOUNDED PAYOUT</p>
+          <div class="box-divs">
+            <p id="white-divs-input">255,000</p>
+            <p id="white-divs-USD">USD</p>
+          </div>
+        </div>
+      </div>
+      <figure class="highcharts-figure">
+        <div id="container" style="width: 100%; height: 400px"></div>
+      </figure>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,244 @@
+html {
+    font-family: "Roboto";
+    font-weight: normal;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #header {
+    font-size: 33px;
+    line-height: 1;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: defaultFont !important;
+    margin: 0;
+    padding-bottom: 0.3%;
+  }
+  
+  #header-h4 {
+    font-size: 14px;
+    line-height: 1;
+    color: #fff;
+    margin: 0;
+    font-weight: 100;
+    padding-bottom: 4%;
+    padding-top: 0.2%;
+  }
+  
+  #parent-container {
+    margin: auto;
+    width: 60%;
+    background-color: #232734;
+    padding: 45px 45px 0 57px;
+  }
+  
+  .child-div {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 50%;
+  }
+  
+  .labels {
+    font-size: 20px;
+    line-height: 1;
+    color: #b37749;
+    font-family: defaultFont;
+  }
+  
+  .inside-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 89%;
+  }
+  
+  #moneyAmount {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .inputs {
+    background-color: #232734;
+    color: white;
+    font-size: 20px;
+    line-height: 1;
+    color: white;
+    font-family: defaultFont !important;
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+  
+  .vl {
+    border-left: 1px solid #b37749;
+    height: 187px;
+    width: 0;
+    padding: 0 2% 0 2%;
+  }
+  
+  #child-container {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .rounded-span {
+    margin-top: 3%;
+  }
+  
+  .rounded-span::before {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border-radius: 100%;
+    background: #b37749;
+  }
+  
+  .subDiv {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .range {
+    margin-top: 1rem;
+    width: 88%;
+    border-radius: 0;
+    appearance: none;
+    height: 0.3rem;
+  }
+  
+  .range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 15px;
+    background-color: white;
+    cursor: pointer;
+    box-shadow: 0 0 0 6px rgb(255 255 255 / 23%);
+  }
+  
+  .rangeDiv {
+    margin-bottom: 3rem;
+  }
+  
+  .loan-value,
+  #USD {
+    font-size: 18px;
+    line-height: 1;
+    color: #fff;
+    position: relative;
+    margin-bottom: 20px;
+    margin-left: 3%;
+    display: inline;
+  }
+  
+  #divs-parent-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 42%;
+    margin: 0 5px;
+    text-align: left;
+    padding-bottom: 10%;
+    margin-bottom: -10%;
+  }
+  
+  #orange-div {
+    background-color: #b37749;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+    padding-bottom: 5%;
+  }
+  
+  #white-div {
+    background-color: white;
+    width: 50%;
+    padding-bottom: 5%;
+  }
+  
+  #orange-divs-title,
+  #white-divs-title {
+    font-size: 11px;
+    font-family: defaultFont;
+    padding-left: 17px;
+    padding-right: 17px;
+    width: 111%;
+    box-sizing: border-box !important;
+    margin-bottom: 9px;
+  }
+  
+  #orange-divs-input,
+  #orange-divs-USD,
+  #white-divs-input {
+    font-size: 25px;
+    margin: 0;
+  }
+  
+  #orange-divs-input,
+  #white-divs-input {
+    font-weight: 400;
+    border: none;
+    letter-spacing: 1px;
+    font-weight: bold;
+  }
+  
+  #orange-divs-input {
+    background-color: #b37749;
+    color: white;
+    padding-left: 17px;
+    box-sizing: border-box;
+    width: 67%;
+    margin: 0;
+  }
+  
+  #white-divs-input {
+    background-color: white;
+    color: #b37749;
+    width: 67%;
+    padding-left: 17px;
+    box-sizing: border-box;
+    margin: 0;
+  }
+  
+  #white-divs-USD {
+    color: #b37749;
+    font-size: 25px !important;
+    font-weight: bold;
+    margin: 0;
+    margin-left: -2%;
+  }
+  
+  .highcharts-title {
+    fill: #333333;
+    display: none;
+  }
+  
+  .highcharts-figure {
+    width: 95%;
+    margin-left: -4%;
+  }
+  
+  .highcharts-credits {
+    display: none;
+  }
+  
+  .highcharts-axis-title {
+    display: none;
+  }
+  
+  .box-divs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  #range-value1,
+  #range-value2 {
+    color: white;
+    font-size: 20px;
+  }
+  
