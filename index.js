@@ -82,18 +82,61 @@ function formatMoney(amount, decimalCount = 2, decimal = ".", thousands = ",") {
 
 //function that takes the user input from the range input and gives the value to the span "Your Investment"
 function changeRangeValue1(inputValue) {
+  //giving the inputValue which is event.target.value from the UI at the other elements
   document.getElementById("range-value1").innerHTML = formatMoney(inputValue);
-  document.getElementById("moneyAmount").innerHTML = ` ${formatMoney(
+  document.getElementById("moneyAmount").innerHTML = `${formatMoney(
     inputValue
   )} USD `;
+  //take the value as a variable so that we can give it to the totalQuarterPayout() and totalCompoundedPayout() functions!
+  let returnValue1 = formatMoney(inputValue);
+  // console.log(returnValue1);
+  //taking the months value from the other range element
+  let months = document.getElementById("range2").value;
+  //calling the function that calculates the Total Quarter Payout
+  totalQuarterPayout(returnValue1, months);
+  //calling the function that calculates the Total Compounded Payout
+  totalCompoundedPayout(returnValue1, months);
 }
 
 //function that takes the user input from the range input and gives the value to the span  "Tenure"
 function changeRangeValue2(inputValue) {
-  document.getElementById("range-value2").innerHTML = ` ${formatMoney(
-    inputValue
-  )} Months`;
-  document.getElementById("months").innerHTML = ` ${formatMoney(
-    inputValue
-  )} Months `;
+  //giving the inputValue which is event.target.value from the UI at the other elements
+  document.getElementById("range-value2").innerHTML = `
+    ${inputValue}
+   Months`;
+  document.getElementById("months").innerHTML = `
+    ${inputValue}  Months `;
+  //take the value as a variable so that we can give it to the totalQuarterPayout() and totalCompoundedPayout() functions!
+  let returnValue2 = formatMoney(inputValue);
+function totalQuarterPayout(moneyAmount, monthAmount) {
+  const factor = 0.0175;
+  console.log(moneyAmount);
+  console.log(monthAmount);
+  const months = monthAmount / 3;
+  if (months === 3) {
+    let money = moneyAmount.replace("", "");
+    let value = formatMoney(money * 0.175);
+    console.log(value);
+    console.log("DESPOINA");
+    let newValue = value.replace(",", "");
+    let finalValue = parseInt(newValue, 10);
+    console.log(finalValue);
+    return finalValue;
+  } else if (monthAmount >= 3) {
+    let value = formatMoney(moneyAmount * (months * factor));
+    console.log("NTAKOU");
+    let newValue = value.replace(",", "");
+    let finalValue = parseInt(newValue, 10);
+    console.log(finalValue);
+    return finalValue;
+  }
+  let returnValue = Math.trunc(finalValue);
+  console.log(returnValue);
+  document.getElementById("orange-divs-input").innerHTML = returnValue;
+}
+
+function totalCompoundedPayout(moneyAmount, monthAmount) {
+  // let value = formatMoney(moneyAmount * ((monthAmount / 3) * 0, 0175));
+  // let finalValue = Math.trunc(value);
+  // document.getElementById("white-divs-input").innerHTML = finalValue;
 }

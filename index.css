@@ -118,7 +118,7 @@ html {
 }
 
 .rangeDiv {
-  margin-bottom: 3rem;
+  margin-bottom: 5rem;
 }
 
 .loan-value,
@@ -140,6 +140,7 @@ html {
   text-align: left;
   padding-bottom: 10%;
   margin-bottom: -10%;
+  margin-top: -6%;
 }
 
 #orange-div {
@@ -249,4 +250,5 @@ html {
 .bullet-div {
   margin-top: 3%;
   font-size: 24px;
+  color: white;
 }
