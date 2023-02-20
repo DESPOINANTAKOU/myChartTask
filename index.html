@@ -29,16 +29,16 @@
               class="range"
               id="range1"
               name="moneyAmount"
-              step="10"
+              step="10000"
               value="125000"
               min="125000"
-              max="1000000"
+              max="1005000"
               onchange="changeRangeValue1(event.target.value)"
             />
           </div>
           <div class="inside-div">
             <span class="labels">Tenure</span>
-            <span id="range-value2">36 <span>Months</span> </span>
+            <span id="range-value2">3 <span>Months</span> </span>
           </div>
           <div class="rangeDiv">
             <input
@@ -48,7 +48,7 @@
               name="moneyAmount"
               min="3"
               max="36"
-              value=""
+              value="3"
               step="3"
               onchange="changeRangeValue2(event.target.value)"
             />
@@ -60,15 +60,21 @@
         <div class="child-div">
           <div class="subDiv">
             <label class="labels">Your Investment</label>
-            <span class="rounded-span"
-              ><span class="loan-value">820,000 USD</span></span
-            >
+            <div class="bullet-div">
+              <span class="rounded-span">
+                <span class="loan-value" id="moneyAmount"
+                  >125,000 <span>USD</span></span
+                >
+              </span>
+            </div>
           </div>
           <div class="subDiv">
             <label class="labels" style="margin-top: 9%">Term</label>
-            <span class="rounded-span"
-              ><span class="loan-value">24 Months</span></span
-            >
+            <div class="bullet-div">
+              <span class="rounded-span">
+                <span class="loan-value" id="months">3 Months</span>
+              </span>
+            </div>
           </div>
         </div>
       </div>
