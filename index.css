@@ -1,5 +1,5 @@
 html {
-  font-family: "Roboto";
+  font-family: "Roboto" !important;
   font-weight: normal;
   box-sizing: border-box;
   margin: 0;
@@ -17,12 +17,12 @@ html {
 }
 
 #header-h4 {
-  font-size: 14px;
+  font-size: 17px;
   line-height: 1;
   color: #fff;
   margin: 0;
   font-weight: 100;
-  padding-bottom: 4%;
+  padding-bottom: 5%;
   padding-top: 0.2%;
 }
 
@@ -38,10 +38,11 @@ html {
   flex-direction: column;
   flex-wrap: wrap;
   width: 50%;
+  margin-bottom: 5%;
 }
 
 .labels {
-  font-size: 20px;
+  font-size: 24px;
   line-height: 1;
   color: #b37749;
   font-family: defaultFont;
@@ -56,7 +57,8 @@ html {
 
 #moneyAmount,
 #months {
-  margin-left: 2%;
+  margin-left: 1%;
+  font-size: 23px;
 }
 
 .inputs {
@@ -133,7 +135,7 @@ html {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 42%;
+  width: 47%;
   margin: 0 5px;
   text-align: left;
   padding-bottom: 10%;
@@ -169,8 +171,10 @@ html {
 #orange-divs-input,
 #orange-divs-USD,
 #white-divs-input {
-  font-size: 25px;
+  font-size: 28px;
   margin: 0;
+  font-weight: bold;
+  margin-top: 1%;
 }
 
 #orange-divs-input,
@@ -188,6 +192,8 @@ html {
   box-sizing: border-box;
   width: 67%;
   margin: 0;
+  font-size: 30px;
+  font-weight: bolder;
 }
 
 #white-divs-input {
@@ -197,14 +203,17 @@ html {
   padding-left: 17px;
   box-sizing: border-box;
   margin: 0;
+  font-size: 30px;
+  font-weight: bolder;
 }
 
 #white-divs-USD {
   color: #b37749;
-  font-size: 25px !important;
-  font-weight: bold;
+  font-size: 28px;
   margin: 0;
-  margin-left: -2%;
+  font-weight: bold;
+  margin-top: 1%;
+  margin-left: -4%;
 }
 
 .highcharts-title {
@@ -234,9 +243,10 @@ html {
 #range-value1,
 #range-value2 {
   color: white;
-  font-size: 20px;
+  font-size: 24px;
 }
 
 .bullet-div {
   margin-top: 3%;
+  font-size: 24px;
 }
