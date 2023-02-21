@@ -3,7 +3,7 @@ let moneyCompoundedArray = [];
 moneyQuarterArray.push(2187);
 moneyCompoundedArray.push(127187);
 
-//function that creates the chart
+// function that creates the chart
 function createChart() {
   var chart = new Highcharts.chart("container", {
     chart: {
@@ -71,6 +71,35 @@ function createChart() {
     ],
   });
 }
+
+
+
+// function createChart() {
+// var chart1 = Highcharts.chart({
+//   chart: {
+//       renderTo: 'container',
+//       type: 'bar'
+//   },
+//   title: {
+//       text: 'Fruit Consumption'
+//   },
+//   xAxis: {
+//       categories: ['Apples', 'Bananas', 'Oranges']
+//   },
+//   yAxis: {
+//       title: {
+//           text: 'Fruit eaten'
+//       }
+//   },
+//   series: [{
+//       name: 'Jane',
+//       data: [1, 0, 4]
+//   }, {
+//       name: 'John',
+//       data: [5, 7, 3]
+//   }]
+// });
+// };
 
 //function that formats the decimals etc
 function formatMoney(amount, decimalCount = 2, decimal = ".", thousands = ",") {
