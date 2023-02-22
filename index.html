@@ -5,9 +5,8 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="./index.css" />
     <script src="https://code.highcharts.com/highcharts.js"></script>
-    <!-- <script src="./index.js"></script> -->
   </head>
-  <body>
+  <body id="body">
     <div id="parent-container">
       <div id="header-section">
         <h4 id="header">AIX SECURE PRODUCT - CALCULATION</h4>
@@ -33,7 +32,6 @@
               value="125000"
               min="125000"
               max="1005000"
-              onchange="changeRangeValue1(event.target.value)"
             />
           </div>
           <div class="inside-div">
@@ -50,7 +48,6 @@
               max="36"
               value="3"
               step="3"
-              onchange="changeRangeValue2(event.target.value)"
             />
           </div>
         </div>
