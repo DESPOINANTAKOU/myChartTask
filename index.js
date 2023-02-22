@@ -12,15 +12,32 @@ function createChart() {
       width: 800,
     },
     xAxis: {
-      categories: [
-        function () {
-          let arr = [];
-          for (let i = 3; i <= document.getElementById("months").value; i=+3) {
-            arr.push(i);
-            console.log(arr);
-          }
-        },
-      ],
+      categories : function() {
+        document.getElementById('range2').addEventListener('change', () => {
+        chart.xAxis[0].setCategories(monthsAmount);
+      });
+      // categories: [
+      //   "3 Months",
+      //   "6 Months",
+      //   "9 Months",
+      //   "12 Months",
+      //   "15 Months",
+      //   "18 Months",
+      //   "21 Months",
+      //   "24 Months",
+      //   "27 Months",
+      //   "30 Months",
+      //   "33 Months",
+      // ],
+        // function () {
+        //   let arr = [];
+        //   console.log(arr);
+        //   for (let i = 3; i <= document.getElementById("months").value; i=+3) {
+        //     console.log(document.getElementById("months").value);
+        //     arr.push(i);
+        //     console.log(arr);
+        //   }
+        // },
     },
     yAxis: { visible: false },
     tooltip: {
@@ -53,53 +70,28 @@ function createChart() {
         lineColor: "#b37749",
         color: "#b37749",
         data: function () {
-          let formattedArray = Number(moneyQuarterArray.push(finalPayout));
-          console.log("DESPOINA");
-          console.log(typeof formattedArray);
+        //   let formattedArray = Number(moneyQuarterArray.push(finalPayout));
+        //   console.log("DESPOINA");
+        //   console.log(typeof formattedArray);
+        // },
+        return [1, 10, 20 ,440];
         },
       },
       {
         name: "COMPOUNDED",
         lineColor: "#b37749",
         color: "#b37749",
-        data: function () {
-          let formattedArray = Number(moneyCompoundedArray.push(finalPayout));
-          console.log("DESPOINA");
-          console.log(typeof formattedArray);
-        },
+        data: 
+        // data: function () {
+        //   let formattedArray = Number(moneyCompoundedArray.push(finalPayout));
+        //   console.log("DESPOINA");
+        //   console.log(typeof formattedArray);
+        // },
+        [100, 140, 220 ,480]
       },
     ],
-  });
-}
-
-
-
-// function createChart() {
-// var chart1 = Highcharts.chart({
-//   chart: {
-//       renderTo: 'container',
-//       type: 'bar'
-//   },
-//   title: {
-//       text: 'Fruit Consumption'
-//   },
-//   xAxis: {
-//       categories: ['Apples', 'Bananas', 'Oranges']
-//   },
-//   yAxis: {
-//       title: {
-//           text: 'Fruit eaten'
-//       }
-//   },
-//   series: [{
-//       name: 'Jane',
-//       data: [1, 0, 4]
-//   }, {
-//       name: 'John',
-//       data: [5, 7, 3]
-//   }]
-// });
-// };
+  }
+});
 
 //function that formats the decimals etc
 function formatMoney(amount, decimalCount = 2, decimal = ".", thousands = ",") {
@@ -130,6 +122,8 @@ function formatMoney(amount, decimalCount = 2, decimal = ".", thousands = ",") {
   }
 }
 
+
+
 //function that takes the user input from the range input and gives the value to the span "Your Investment"
 function changeRangeValue1(inputValue) {
   //giving the inputValue which is event.target.value from the UI at the other elements
@@ -149,7 +143,7 @@ function changeRangeValue1(inputValue) {
   createChart();
   console.log("chart1");
 }
-
+changeRangeValue1();
 //function that takes the user input from the range input and gives the value to the span  "Tenure"
 function changeRangeValue2(inputValue) {
   //giving the inputValue which is event.target.value from the UI at the other elements
@@ -167,7 +161,17 @@ function changeRangeValue2(inputValue) {
   totalCompoundedPayout(money, Number(inputValue));
   createChart();
   console.log("chart2");
+  changeMonths(Number(inputValue));
 }
+changeRangeValue2();
+
+
+document.getElementById("range1").addEventListener("change", changeRangeValue1);
+document.getElementById("range2").addEventListener("change", changeRangeValue2);
+// onChange="changeRangeValue1(event.target.value)";
+// onChange="changeRangeValue2(event.target.value)";
+
+
 
 function totalQuarterPayout(moneyAmount, monthAmount) {
   //factor that the money are calculated with
@@ -202,3 +206,4 @@ function totalCompoundedPayout(moneyAmount, monthAmount) {
   document.getElementById("white-divs-input").innerHTML = finalPayout;
   console.log("DESPOINA" + finalPayout);
 }
+};
