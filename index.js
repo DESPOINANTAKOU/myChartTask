@@ -1,12 +1,13 @@
 let moneyQuarterArray = [];
 let moneyCompoundedArray = [];
-let monthsArray = [];
+let monthsArray = ["3"];
+console.log(monthsArray);
 moneyQuarterArray.push(2187);
 moneyCompoundedArray.push(127187);
 
 // function that creates the chart
 function CreateChart() {
-  let chart = new Highcharts.chart("container", {
+  let chart = Highcharts.chart("container", {
     chart: {
       backgroundColor: "#232734",
       type: "area",
@@ -145,8 +146,8 @@ function changeRangeValue1(inputValue) {
   document.getElementById("moneyAmount").innerHTML = `${newInputValue} USD `;
   //taking the months value from the other range element
   let months = Number(document.getElementById("range2").value);
-  let stringedMoney =newInputValue.toString();
-  let stringedMonths =months.toString();
+  let stringedMoney = newInputValue.toString();
+  let stringedMonths = months.toString();
   // for(let i=0; i<=monthsArray.length; i++){
   //   if(stringedMonths !== monthsArray[i] ){
   //     monthsArray.push(stringedMonths);
@@ -176,22 +177,27 @@ function changeRangeValue2(inputValue) {
   //taking the months value from the other range element
   let money = Number(document.getElementById("range1").value);
   //transformation again to strings so that we can replace the , with empty space
-  let stringedMoney =money.toString();
-  let stringedMonths =months.toString();
-  for(let i=0; i<=monthsArray.length; i++){
-    if(stringedMonths !== monthsArray[i] ){
-      monthsArray.push(stringedMonths);
-    };
-  };
+  let stringedMoney = money.toString();
+  let stringedMonths = months.toString();
+  // console.log(monthsArray.length);
+  // if (monthsArray.length === 0) {
+  //   return;
+  // } else {
+  //   for (let i = 0; i <= monthsArray.length; i++) {
+  //     if (stringedMonths !== monthsArray[i]) {
+  //       monthsArray.push(stringedMonths);
+  //     }
+  //   }
+  // }
   console.log(months);
   console.log(monthsArray);
   //calling the function that calculates the Total Quarter Payout
-  totalQuarterPayout(stringedMoney,stringedMonths);
+  totalQuarterPayout(stringedMoney, stringedMonths);
   //calling the function that calculates the Total Compounded Payout
-  totalCompoundedPayout(stringedMoney,stringedMonths);
-    monthsArray.push(months);
-    console.log(months);
-    console.log(monthsArray);
+  totalCompoundedPayout(stringedMoney, stringedMonths);
+  monthsArray.push(months);
+  console.log(months);
+  console.log(monthsArray);
   console.log("chart2");
   CreateChart();
 }
@@ -203,59 +209,43 @@ document.getElementById("range2").addEventListener("change", (e) => {
   changeRangeValue2(e.target.value);
 });
 
-document.getElementById("body").addEventListener("DOMContentLoaded", (e) => {
-  let chart = Highcharts.chart("container", {
-    chart: {
-      backgroundColor: "#232734",
-      type: "area",
-      width: 800,
-    },
-    gapSize: 1,
-    xAxis: {
-      categories: monthsArray,
-    },
-    yAxis: { visible: false },
-    tooltip: {
-      backgroundColor: "white",
-      borderColor: "white",
-      borderRadius: 3,
-      borderWidth: 4,
-    },
-    legend: {
-      enabled: false,
-    },
-    plotOptions: {
-      area: {
-        pointStart: 0,
-        marker: {
-          enabled: false,
-          symbol: "circle",
-          radius: 2,
-          states: {
-            hover: {
-              enabled: true,
+document.getElementById("body").addEventListener("DOMContentLoaded", {
+  function() {
+    Highcharts.chart("container", {
+      chart: {
+        type: "area",
+      },
+      accessibility: {
+        description: "chart for money investments",
+        xAxis: {
+          categories: ["3 Months"],
+        },
+      },
+      yAxis: {
+        categories: ["125,000"],
+      },
+      tooltip: {
+        backgroundColor: "white",
+        borderColor: "white",
+        borderRadius: 3,
+        borderWidth: 4,
+      },
+      plotOptions: {
+        area: {
+          pointStart: 1940,
+          marker: {
+            enabled: false,
+            symbol: "circle",
+            radius: 2,
+            states: {
+              hover: {
+                enabled: true,
+              },
             },
           },
         },
       },
-    },
-    series: [
-      {
-        name: "QUARTER",
-        lineColor: "#b37749",
-        color: "#b37749",
-      },
-      {
-        name: "COMPOUNDED",
-        lineColor: "#b37749",
-        color: "#b37749",
-        data: function () {
-          for (let i = 0; i <= 11; i++) {
-            let monthAmount = document.getElementById("white-divs-input").value;
-            return monthAmount;
-          }
-        },
-      },
-    ],
-  });
+      series: [],
+    });
+  },
 });
