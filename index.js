@@ -15,72 +15,70 @@ function CreateChart() {
     gapSize: 1,
     xAxis: {
       categories: monthsArray,
-      },
-      yAxis: { visible: false },
-      tooltip: {
-        backgroundColor: "white",
-        borderColor: "white",
-        borderRadius: 3,
-        borderWidth: 4,
-      },
-      legend: {
-        enabled: false,
-      },
-      plotOptions: {
-        area: {
-          pointStart: 0,
-          marker: {
-            enabled: false,
-            symbol: "circle",
-            radius: 2,
-            states: {
-              hover: {
-                enabled: true,
-              },
+    },
+    yAxis: { visible: false },
+    tooltip: {
+      backgroundColor: "white",
+      borderColor: "white",
+      borderRadius: 3,
+      borderWidth: 4,
+    },
+    legend: {
+      enabled: false,
+    },
+    plotOptions: {
+      area: {
+        pointStart: 0,
+        marker: {
+          enabled: false,
+          symbol: "circle",
+          radius: 2,
+          states: {
+            hover: {
+              enabled: true,
             },
           },
         },
       },
-      series: [
-        {
-          name: "QUARTER",
-          lineColor: "#b37749",
-          color: "#b37749",
-          // data: function () {
-          //   //   let formattedArray = Number(moneyQuarterArray.push(finalPayout));
-          //   //   console.log("DESPOINA");
-          //   //   console.log(typeof formattedArray);
-          //   // },
-          //   //   return [1, 10, 20, 440];
-          // },
-          data:function (){
-            for (let i=0; i <=11; i++){
-              let quarterValue = document.getElementById("orange-divs-input").value;
-              return quarterValue;
-            }
+    },
+    series: [
+      {
+        name: "QUARTER",
+        lineColor: "#b37749",
+        color: "#b37749",
+        // data: function () {
+        //   //   let formattedArray = Number(moneyQuarterArray.push(finalPayout));
+        //   //   console.log("DESPOINA");
+        //   //   console.log(typeof formattedArray);
+        //   // },
+
+        // },
+        // data:function (){
+        //   for (let i=0; i <=11; i++){ //there are 12 possible month quarters
+        //     let quarterValue = document.getElementById("orange-divs-input").value;
+        //     return quarterValue;
+        //   }
+      },
+      {
+        name: "COMPOUNDED",
+        lineColor: "#b37749",
+        color: "#b37749",
+        data: function () {
+          for (let i = 0; i <= 11; i++) {
+            let monthAmount = document.getElementById("white-divs-input").value;
+            return monthAmount;
           }
         },
-        {
-          name: "COMPOUNDED",
-          lineColor: "#b37749",
-          color: "#b37749",
-          data: function (){
-            for (let i=0; i <=11; i++){
-              let monthAmount = document.getElementById("white-divs-input").value;
-              return monthAmount;
-            }
-          },
-          // data: function () {
-          //   let formattedArray = Number(moneyCompoundedArray.push(finalPayout));
-          //   console.log("DESPOINA");
-          //   console.log(typeof formattedArray);
-          // },
-          //   [100, 140, 220, 480],
-        },
-      ],
-    },
-  )};
-
+        // data: function () {
+        //   let formattedArray = Number(moneyCompoundedArray.push(finalPayout));
+        //   console.log("DESPOINA");
+        //   console.log(typeof formattedArray);
+        // },
+        //   [100, 140, 220, 480],
+      },
+    ],
+  });
+}
 
 //function that formats the decimals etc
 function formatMoney(amount, decimalCount = 2, decimal = ".", thousands = ",") {
@@ -147,14 +145,19 @@ function changeRangeValue1(inputValue) {
   document.getElementById("moneyAmount").innerHTML = `${newInputValue} USD `;
   //taking the months value from the other range element
   let months = Number(document.getElementById("range2").value);
-  monthsArray.push(months);
-  for(let i =3; i<= months; i+=3){
-   monthsArray.push(i + " Months");
-  }
+  let stringedMoney =newInputValue.toString();
+  let stringedMonths =months.toString();
+  // for(let i=0; i<=monthsArray.length; i++){
+  //   if(stringedMonths !== monthsArray[i] ){
+  //     monthsArray.push(stringedMonths);
+  //   };
+  // };
+  // console.log(months);
+  // console.log(monthsArray);
   //calling the function that calculates the Total Quarter Payout
-  totalQuarterPayout(newInputValue, months);
+  totalQuarterPayout(stringedMoney, stringedMonths);
   //calling the function that calculates the Total Compounded Payout
-  totalCompoundedPayout(newInputValue, months);
+  totalCompoundedPayout(stringedMoney, stringedMonths);
   console.log("chart1");
   CreateChart();
 }
@@ -162,19 +165,33 @@ function changeRangeValue1(inputValue) {
 //function that takes the user input from the range input and gives the value to the span  "Tenure"
 function changeRangeValue2(inputValue) {
   //giving the inputValue which is event.target.value from the UI at the other elements
-  let newInputValue = formatMoney(inputValue);
+  let newInputValue = Number(inputValue);
+  let months = formatMoney(newInputValue);
   //giving the inputValue which is event.target.value from the UI at the other elements
   document.getElementById("range-value2").innerHTML = `
-      ${newInputValue}
+      ${months}
      Months`;
   document.getElementById("months").innerHTML = `
-      ${newInputValue}  Months `;
+      ${months}  Months `;
   //taking the months value from the other range element
-  let money = document.getElementById("range1").value;
+  let money = Number(document.getElementById("range1").value);
+  //transformation again to strings so that we can replace the , with empty space
+  let stringedMoney =money.toString();
+  let stringedMonths =months.toString();
+  for(let i=0; i<=monthsArray.length; i++){
+    if(stringedMonths !== monthsArray[i] ){
+      monthsArray.push(stringedMonths);
+    };
+  };
+  console.log(months);
+  console.log(monthsArray);
   //calling the function that calculates the Total Quarter Payout
-  totalQuarterPayout(money, Number(newInputValue));
+  totalQuarterPayout(stringedMoney,stringedMonths);
   //calling the function that calculates the Total Compounded Payout
-  totalCompoundedPayout(money, Number(newInputValue));
+  totalCompoundedPayout(stringedMoney,stringedMonths);
+    monthsArray.push(months);
+    console.log(months);
+    console.log(monthsArray);
   console.log("chart2");
   CreateChart();
 }
@@ -184,4 +201,61 @@ document.getElementById("range1").addEventListener("change", (e) => {
 });
 document.getElementById("range2").addEventListener("change", (e) => {
   changeRangeValue2(e.target.value);
+});
+
+document.getElementById("body").addEventListener("DOMContentLoaded", (e) => {
+  let chart = Highcharts.chart("container", {
+    chart: {
+      backgroundColor: "#232734",
+      type: "area",
+      width: 800,
+    },
+    gapSize: 1,
+    xAxis: {
+      categories: monthsArray,
+    },
+    yAxis: { visible: false },
+    tooltip: {
+      backgroundColor: "white",
+      borderColor: "white",
+      borderRadius: 3,
+      borderWidth: 4,
+    },
+    legend: {
+      enabled: false,
+    },
+    plotOptions: {
+      area: {
+        pointStart: 0,
+        marker: {
+          enabled: false,
+          symbol: "circle",
+          radius: 2,
+          states: {
+            hover: {
+              enabled: true,
+            },
+          },
+        },
+      },
+    },
+    series: [
+      {
+        name: "QUARTER",
+        lineColor: "#b37749",
+        color: "#b37749",
+      },
+      {
+        name: "COMPOUNDED",
+        lineColor: "#b37749",
+        color: "#b37749",
+        data: function () {
+          for (let i = 0; i <= 11; i++) {
+            let monthAmount = document.getElementById("white-divs-input").value;
+            return monthAmount;
+          }
+        },
+      },
+    ],
+  });
 });
