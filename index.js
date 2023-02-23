@@ -1,5 +1,6 @@
 let moneyQuarterArray = [];
 let moneyCompoundedArray = [];
+let monthsArray = [];
 moneyQuarterArray.push(2187);
 moneyCompoundedArray.push(127187);
 
@@ -11,38 +12,9 @@ function CreateChart() {
       type: "area",
       width: 800,
     },
+    gapSize: 1,
     xAxis: {
-      categories: function () {
-        document.getElementById("range2").addEventListener("change", (e) => {
-         console.log(month);
-          let month = e.target.value;
-          for (let i = 0; i <= 11; i++) {
-            chart.xAxis[0].setCategories(month);
-            console.log(month);
-          }
-        });
-        // categories: [
-        //   "3 Months",
-        //   "6 Months",
-        //   "9 Months",
-        //   "12 Months",
-        //   "15 Months",
-        //   "18 Months",
-        //   "21 Months",
-        //   "24 Months",
-        //   "27 Months",
-        //   "30 Months",
-        //   "33 Months",
-        // ],
-        // function () {
-        //   let arr = [];
-        //   console.log(arr);
-        //   for (let i = 3; i <= document.getElementById("months").value; i=+3) {
-        //     console.log(document.getElementById("months").value);
-        //     arr.push(i);
-        //     console.log(arr);
-        //   }
-        // },
+      categories: monthsArray,
       },
       yAxis: { visible: false },
       tooltip: {
@@ -107,8 +79,8 @@ function CreateChart() {
         },
       ],
     },
-  });
-}
+  )};
+
 
 //function that formats the decimals etc
 function formatMoney(amount, decimalCount = 2, decimal = ".", thousands = ",") {
@@ -175,6 +147,10 @@ function changeRangeValue1(inputValue) {
   document.getElementById("moneyAmount").innerHTML = `${newInputValue} USD `;
   //taking the months value from the other range element
   let months = Number(document.getElementById("range2").value);
+  monthsArray.push(months);
+  for(let i =3; i<= months; i+=3){
+   monthsArray.push(i + " Months");
+  }
   //calling the function that calculates the Total Quarter Payout
   totalQuarterPayout(newInputValue, months);
   //calling the function that calculates the Total Compounded Payout
